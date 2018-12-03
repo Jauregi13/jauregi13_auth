@@ -29,13 +29,13 @@
                       </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('login')}}" data-toggle="modal" data-target="#loginModal">
+                        <a class="nav-link" href="{{route('login')}}">
                             <i class="fa fa-sign-in"></i>
                             Login
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('register')}}" data-toggle="modal" data-target="#registerModal">
+                        <a class="nav-link" href="{{route('register')}}">
                             <i class="fa fa-user-plus"></i>
                             Registro
                         </a>
