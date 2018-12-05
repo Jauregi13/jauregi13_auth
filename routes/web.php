@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/perfil', ['as' => 'perfil', 'uses' => 'PerfilController@get']);
+
+Route::post('/editar', ['as' => 'editar', 'uses' => 'PerfilController@editar']);

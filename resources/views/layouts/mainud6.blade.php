@@ -1,4 +1,4 @@
-
+-+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -20,7 +20,7 @@
       @else
         @include("elements.navbarUser")
       @endguest
-      <main class="p-0">
+      <main class="p-5">
           @yield("content")
       </main>
 
