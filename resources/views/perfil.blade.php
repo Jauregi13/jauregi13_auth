@@ -14,8 +14,9 @@
 <br>
 <input type="email" name="email" value="{{ Auth::user()->email}}">
 <br>
-<input type="submit" name="enviar" value="Enviar">	
+<input type="submit" name="enviar" value="Enviar">
 </form>
+<a href="{{route('password')}}">Cambiar contraseña</a>
 
 
 

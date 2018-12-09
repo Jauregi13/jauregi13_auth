@@ -11,7 +11,7 @@
 
             <ul class="navbar-nav mr-auto">
                 <li id="initial" class="nav-item">
-                    <a class="nav-link" href="#inicio">
+                    <a class="nav-link" href="{{route('home')}}">
                         Inicio
                     </a>
                 </li>
