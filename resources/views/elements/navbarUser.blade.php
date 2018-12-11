@@ -16,12 +16,12 @@
                     </a>
                 </li>
                 <li id="initial" class="nav-item">
-                    <a class="nav-link" href="{{route('mensajes')}}">
+                    <a class="nav-link" href="{{route('mensajes.index')}}">
                         Mensajes
                     </a>
                 </li>
                 <li id="initial" class="nav-item">
-                    <a class="nav-link" href="{{route('anadirMensaje')}}">
+                    <a class="nav-link" href="{{route('mensajes.create')}}">
                         Añadir Mensaje
                     </a>
                 </li>

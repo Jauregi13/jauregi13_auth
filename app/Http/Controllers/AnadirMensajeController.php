@@ -8,6 +8,6 @@ class AnadirMensajeController extends Controller
 {
     public function get()
     {
-      return view('AnadirMensaje');
+      return view('anadirMensaje');
     }
 }
