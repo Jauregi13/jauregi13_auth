@@ -11,6 +11,7 @@
 
       <link rel="shortcut icon" href="{{ asset("favicon.png") }}" type="image/png">
       <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="style.css">
       <link rel="stylesheet" href="{{ url("font-awesome/css/font-awesome.min.css") }}">
   </head>
 

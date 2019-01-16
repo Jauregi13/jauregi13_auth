@@ -29,6 +29,6 @@ Route::get('/password', ['as' => 'password', 'uses' => 'CambiarPasswordControlle
 
 Route::post('cambiarPass', ['as' => 'cambiarPass', 'uses' => 'CambiarPasswordController@update']);
 
-Route::get('/mensajes', ['as' => 'mensajes', 'uses' => 'MensajesController@get']);
+Route::get('/mensajes', ['as' => 'mensajes.index', 'uses' => 'MensajeController@index']);
 
-Route::get('/anadirMensaje', ['as' => 'anadirMensaje', 'uses' => 'AnadirMensajeController@get']);
+Route::get('/mensajes/create', ['as' => 'mensajes.create', 'uses' => 'MensajeController@create']);
