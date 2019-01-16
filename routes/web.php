@@ -17,7 +17,7 @@ Route::get('/welcome', function () {
 
 Route::get('/', ['as'=>'home','uses'=>'AppController@index']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
