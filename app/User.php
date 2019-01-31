@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Notifications\VerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -29,13 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function Messages()
+    public function messages()
     {
-        # code...
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmail);
+        $this->belongsToMany('App\Message');
     }
 }

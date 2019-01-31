@@ -1,3 +1,6 @@
 .dropdown-menu {
 	left: -90; important!
 }
+.invalid-feedback {
+	display: block; important!
+}

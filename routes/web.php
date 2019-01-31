@@ -11,24 +11,12 @@
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome_basic');
-})->middleware('auth.basic');
-
 Route::get('/', ['as'=>'home','uses'=>'AppController@index']);
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/perfil', ['as' => 'perfil', 'uses' => 'PerfilController@get']);
+Route::resource('perfil','PerfilController');
 
-Route::post('/editar', ['as' => 'editar', 'uses' => 'PerfilController@editar']);
-
-Route::get('/password', ['as' => 'password', 'uses' => 'CambiarPasswordController@get']);
-
-Route::post('cambiarPass', ['as' => 'cambiarPass', 'uses' => 'CambiarPasswordController@update']);
-
-Route::get('/mensajes', ['as' => 'mensajes.index', 'uses' => 'MensajeController@index']);
-
-Route::get('/mensajes/create', ['as' => 'mensajes.create', 'uses' => 'MensajeController@create']);
+Route::resource('mensajes','MensajeController')->only('index','create','store');

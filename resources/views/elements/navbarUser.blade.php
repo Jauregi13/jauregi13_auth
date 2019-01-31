@@ -17,33 +17,28 @@
                 </li>
                 <li id="initial" class="nav-item">
                     <a class="nav-link" href="{{route('mensajes.index')}}">
-                        Mensajes
+                        Mensajes Recibidos
+                    </a>
+                </li>
+                <li id="initial" class="nav-item">
+                    <a class="nav-link" href="{{route('mensajes.index')}}">
+                        Mensajes Enviados
                     </a>
                 </li>
                 <li id="initial" class="nav-item">
                     <a class="nav-link" href="{{route('mensajes.create')}}">
-                        Añadir Mensaje
+                        Enviar Mensaje
                     </a>
                 </li>
             </ul>
 
             <ul class="navbar-nav navbar-right">
                     <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-flag"></i>
-                        Idioma
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Euskara</a>
-                        <a class="dropdown-item active" href="#">Castellano</a>
-                      </div>
-                    </li>
-                    <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle mr-5" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('perfil') }}">Perfil</a>
+                        <a class="dropdown-item" href="{{ route('perfil.show',Auth::user()->id) }}">Perfil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
