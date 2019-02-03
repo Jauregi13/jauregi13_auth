@@ -16,12 +16,12 @@
                     </a>
                 </li>
                 <li id="initial" class="nav-item">
-                    <a class="nav-link" href="{{route('mensajes.index')}}">
-                        Mensajes Recibidos
+                    <a class="nav-link" href="{{route('mensajesRecibidos')}}">
+                        Mensajes Recibidos <span class="badge badge-success">{{Session::get('mensajes')}}</span>
                     </a>
                 </li>
                 <li id="initial" class="nav-item">
-                    <a class="nav-link" href="{{route('mensajes.index')}}">
+                    <a class="nav-link" href="{{route('mensajesEnviados')}}">
                         Mensajes Enviados
                     </a>
                 </li>

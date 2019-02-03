@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 use App\Http\Requests\StoreMensajeRequest;
 use App\Message;
 
@@ -47,7 +46,18 @@ class MensajeController extends Controller
      */
     public function store(StoreMensajeRequest $request)
     {
-        dd($request->all());
+        $mensaje = new Message;
+        $mensaje->asunto = $request->asunto;
+        $mensaje->mensaje = $request->mensaje;
+        $mensaje->user_id = Auth::user()->id;
+        $mensaje->email_recibido = $request->email_destin;
+        $mensaje->leido = false;
+
+        $mensaje->save();
+
+        return back()->with('confirmation','Mensaje enviado correctamente');
+
+
     }
 
     /**
@@ -59,6 +69,29 @@ class MensajeController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function mensajesEnviados()
+    {
+      $user = Auth::user();
+
+      $mensajes = Message::where('user_id',$user->id)
+      ->orderBy('created_at','desc')
+      ->get();
+
+      return view('mensajesEnviados')->with('mensajes',$mensajes);
+
+    }
+
+    public function mensajesRecibidos()
+    {
+      $user = Auth::user();
+      $mensajes = Message::where('email_recibido',$user->email)
+      ->orderBy('created_at','desc')
+      ->get();
+
+      return view('mensajesRecibidos')->with('mensajes',$mensajes);
+
     }
 
     /**
@@ -81,7 +114,37 @@ class MensajeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+    }
+
+    public function leerMensaje($id)
+    {
+      $mensaje = Message::find($id);
+
+      $mensaje->leido = true;
+
+      $mensaje->save();
+
+      $user = Auth::user();
+
+      $mensajesNoLeidos = Message::where(['email_recibido' => $user->email,'leido' => false])
+      ->orderBy('created_at','desc')
+      ->count();
+
+      session(['mensajes' => $mensajesNoLeidos]);
+
+      return back()->with('confirmation','Has leido el mensaje de '.$mensaje->user->name);
+    }
+
+    public function eliminarLeido($id)
+    {
+      $mensaje = Message::find($id);
+
+      $mensaje->email_recibido = null;
+
+      $mensaje->save();
+
+      return back();
     }
 
     /**

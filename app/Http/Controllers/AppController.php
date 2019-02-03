@@ -9,7 +9,7 @@ class AppController extends Controller
   public function __construct()
   {
       //$this->middleware('auth');
-      $this->middleware('example', ['only'=>['index']]);
+      $this->middleware('guest');
   }
 
   public function index()

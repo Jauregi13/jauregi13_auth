@@ -20,3 +20,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('perfil','PerfilController');
 
 Route::resource('mensajes','MensajeController')->only('index','create','store');
+
+Route::get('/mensajesEnviados','MensajeController@mensajesEnviados')->name('mensajesEnviados');
+
+Route::get('/mensajesRecibidos','MensajeController@mensajesRecibidos')->name('mensajesRecibidos');
+
+Route::get('/leerMensaje/{id}','MensajeController@leerMensaje')->name('leerMensaje');
+
+Route::get('/eliminar/{id}','MensajeController@eliminarLeido')->name('eliminarLeido');

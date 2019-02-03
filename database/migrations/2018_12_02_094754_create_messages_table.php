@@ -18,8 +18,10 @@ class CreateMessagesTable extends Migration
             $table->string('asunto');
             $table->string('mensaje');
             $table->integer('user_id')->unsigned();
-            $table->integer('user_id_recibido')->unsigned();
+            $table->string('email_recibido')->nullable();
+            $table->boolean('leido')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
