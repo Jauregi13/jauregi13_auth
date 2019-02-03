@@ -15,7 +15,7 @@
           <th scope="col">Asunto</th>
           <th scope="col">Mensaje</th>
           <th>Fecha</th>
-          <th>Eliminar</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +26,7 @@
             <td>{{$mensaje->asunto}}</td>
             <td>{{$mensaje->mensaje}}</td>
             <td>{{$mensaje->created_at}}</td>
-            <td><button type="button" class="btn btn-danger"><span class="oi oi-trash"></span></button></td>
+            <td><a href="{{route('mensajes.edit',$mensaje->id)}}" class="btn btn-warning"><span class="oi oi-pencil"></span></a></td>
           </tr>
         @endforeach
       </tbody>

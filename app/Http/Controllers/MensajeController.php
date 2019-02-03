@@ -17,14 +17,11 @@ class MensajeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','user']);
     }
     public function index()
     {
-        $user = Auth::User();
-        $messages_enviados= Message::where('from',$user->id)->orderBy('datetime', 'DESC')->get();
-        $messages_recibidos= Message::where('to',$user->id)->orderBy('datetime', 'DESC')->get();
-        return view('message.index',compact('messages_enviados','messages_recibidos'));
+
 
     }
 
@@ -102,7 +99,9 @@ class MensajeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mensaje = Message::find($id);
+
+        return view('editarMensaje')->with('mensaje',$mensaje);
     }
 
     /**
@@ -112,8 +111,19 @@ class MensajeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreMensajeRequest $request, $id)
     {
+      $mensaje = Message::find($id);
+
+      dd($request->asunto);
+
+      $mensaje->asunto = $request->asunto;
+
+      $mensaje->mensaje = $request->mensaje;
+
+      $mensaje->save();
+
+      return back()->with('update','Mensaje editado correctamente');
 
     }
 
@@ -136,17 +146,6 @@ class MensajeController extends Controller
       return back()->with('confirmation','Has leido el mensaje de '.$mensaje->user->name);
     }
 
-    public function eliminarLeido($id)
-    {
-      $mensaje = Message::find($id);
-
-      $mensaje->email_recibido = null;
-
-      $mensaje->save();
-
-      return back();
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -155,6 +154,10 @@ class MensajeController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $mensaje = Message::find($id);
+
+      $mensaje->delete();
+
+      return back()->with('delete','Mensaje eliminado correctamente');
     }
 }

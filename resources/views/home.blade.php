@@ -15,6 +15,8 @@
                     @endif
 
                     Aquí podrás chatear con cualquier persona de la plataforma
+
+                    {{Request::cookie('prueba')}}
                 </div>
             </div>
         </div>

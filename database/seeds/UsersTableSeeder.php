@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
           'name'=> $obj->name,
           'email'=>$obj->email,
           'password'=>Hash::make($obj->password),
+          'role_id' => $obj->role_id
         ]);
       }
     }

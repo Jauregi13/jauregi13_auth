@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Bienvenido Administrador!</div>
 
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                        session ('status')
                     @endif
 
-                    UNIDAD 6 y UNIDAD 7 'ENTREGA FINAL'
+                    Hay {{$users}} usuarios registrados en la plataforma
+
                 </div>
             </div>
         </div>

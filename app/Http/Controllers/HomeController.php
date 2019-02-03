@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','user']);
     }
 
     /**
@@ -30,6 +30,9 @@ class HomeController extends Controller
         ->orderBy('created_at','desc')
         ->count();
         $sesion = session()->put('mensajes',$mensajes);
+        $cookie = cookie('prueba',$user->name,60);
+
+        response('cookie')->withCookie($cookie);
         return view('home');
     }
 }

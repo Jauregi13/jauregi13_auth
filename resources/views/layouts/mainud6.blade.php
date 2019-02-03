@@ -18,8 +18,10 @@
   <body>
       @guest
         @include("elements.navbar")
-      @else
+      @elseif(Auth::user()->role->name == 'user')
         @include("elements.navbarUser")
+      @else
+        @include("elements.navbarAdmin")
       @endguest
       <main class="p-5">
           @yield("content")

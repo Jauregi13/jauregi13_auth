@@ -17,14 +17,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin','AdminController@index')->name('admin');
+
+Route::get('/listadoUsuarios','AdminController@listarUsuarios')->name('listarUsuarios');
+
+Route::get('/eliminar/{id}','AdminController@eliminarUsuario')->name('eliminarUsuario');
+
 Route::resource('perfil','PerfilController');
 
-Route::resource('mensajes','MensajeController')->only('index','create','store');
+Route::resource('mensajes','MensajeController')->only('create','store','destroy','edit','update');
 
 Route::get('/mensajesEnviados','MensajeController@mensajesEnviados')->name('mensajesEnviados');
 
 Route::get('/mensajesRecibidos','MensajeController@mensajesRecibidos')->name('mensajesRecibidos');
 
 Route::get('/leerMensaje/{id}','MensajeController@leerMensaje')->name('leerMensaje');
-
-Route::get('/eliminar/{id}','MensajeController@eliminarLeido')->name('eliminarLeido');
