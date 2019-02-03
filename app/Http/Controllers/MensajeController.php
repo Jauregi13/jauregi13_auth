@@ -111,11 +111,9 @@ class MensajeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreMensajeRequest $request, $id)
+    public function update(Request $request, $id)
     {
       $mensaje = Message::find($id);
-
-      dd($request->asunto);
 
       $mensaje->asunto = $request->asunto;
 
