@@ -17,8 +17,12 @@ class UserRole
      */
      public function handle($request, Closure $next, $guard = null)
      {
-       if (Auth::guard($guard)->check() && $request->user()->role->name == 'user' ) {
-         return $next($request);
+       if (Auth::guard($guard)->check()) {
+         foreach ($request->user()->roles  as $role) {
+           if ($role->name == 'editor' || $role->name == 'creador') {
+             return $next($request);
+           }
+         }
        }
 
        return redirect('/admin');

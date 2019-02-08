@@ -18,10 +18,14 @@
   <body>
       @guest
         @include("elements.navbar")
-      @elseif(Auth::user()->role->name == 'user')
-        @include("elements.navbarUser")
       @else
-        @include("elements.navbarAdmin")
+        @foreach(Auth::user()->roles as $rol)
+          @if($rol->name == 'editor' || $rol->name =='creador')
+            @include("elements.navbarUser")
+          @else
+            @include("elements.navbarAdmin")
+          @endif
+        @foreach
       @endguest
       <main class="p-5">
           @yield("content")

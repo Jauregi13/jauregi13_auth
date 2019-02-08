@@ -18,8 +18,12 @@ class Admin
      */
      public function handle($request, Closure $next, $guard = null)
      {
-       if (Auth::guard($guard)->check() && $request->user()->role->name == 'admin' ) {
-         return $next($request);
+       if (Auth::guard($guard)->check()) {
+         foreach ($request->user()->roles  as $role) {
+           if ($role->name == 'admin') {
+             return $next($request);
+           }
+         }
        }
 
        return redirect('/home');
