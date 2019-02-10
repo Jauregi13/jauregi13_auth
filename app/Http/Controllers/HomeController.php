@@ -33,6 +33,6 @@ class HomeController extends Controller
         $cookie = cookie('prueba',$user->name,60);
 
         response('cookie')->withCookie($cookie);
-        return view('home');
+        return view('home')->withCookie($cookie);
     }
 }

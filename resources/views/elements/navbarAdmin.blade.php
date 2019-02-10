@@ -29,7 +29,7 @@
                         {{ Auth::user()->name }}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('perfil.show',Auth::user()->id) }}">Perfil</a>
+                        <a class="dropdown-item" href="{{ route('perfil.edit',Auth::user()->id) }}">Perfil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

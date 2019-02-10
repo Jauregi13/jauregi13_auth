@@ -23,7 +23,7 @@ Route::get('/listadoUsuarios','AdminController@listarUsuarios')->name('listarUsu
 
 Route::get('/eliminar/{id}','AdminController@eliminarUsuario')->name('eliminarUsuario');
 
-Route::resource('perfil','PerfilController');
+Route::resource('perfil','PerfilController')->only('edit','update');
 
 Route::resource('mensajes','MensajeController')->only('create','store','destroy','edit','update');
 

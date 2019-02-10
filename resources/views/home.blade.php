@@ -16,7 +16,7 @@
 
                     Aquí podrás chatear con cualquier persona de la plataforma
 
-                    {{Request::cookie('prueba')}}
+                    {{Cookie::get('prueba')}}
                 </div>
             </div>
         </div>

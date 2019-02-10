@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PerfilController extends Controller
 {
@@ -56,7 +57,9 @@ class PerfilController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = $user->roles;
+        return view('perfil')->with(['usuario' => $user,'roles' => $roles]);
     }
 
     /**
@@ -68,7 +71,14 @@ class PerfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->nombre;
+        $user->email = $request->email;
+        $user->save();
+
+        return back()->with('update','El perfil se ha actualizado correctamente');
+
     }
 
     /**

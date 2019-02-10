@@ -15,6 +15,10 @@
                     @endif
 
                     Hay {{$users}} usuarios registrados en la plataforma
+                    <br>
+                    Hay {{$editores}} editor(es)
+                    <br>
+                    Hay {{$creadores}} creador(es)
 
                 </div>
             </div>
