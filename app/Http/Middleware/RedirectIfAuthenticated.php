@@ -18,14 +18,14 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-          foreach (Auth::user()->roles as $rol) {
-            if ($rol->name == 'editor' || $rol->name == 'creador') {
-              return redirect('/home');
-            }
-            return redirect('/admin');
-
+          if ($request->user()->hasRole('editor') || $request->user()->hasRole('creador')) {
+            return redirect('/home');
           }
-        }
-        return $next($request);
+          else {
+            return redirect('/admin');
+          }
+      }
+      return $next($request);
+
     }
 }

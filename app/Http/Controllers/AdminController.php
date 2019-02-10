@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Role;
 class AdminController extends Controller
 {
   public function __construct()
@@ -13,8 +13,9 @@ class AdminController extends Controller
   }
     public function index()
     {
-      $users = User::where('role_id', 2)->count();
-
+      $users = User::count();
+      $editor = Role::find(2);
+      dd($editor->users);
       return view('admin')->with('users',$users);
     }
 
